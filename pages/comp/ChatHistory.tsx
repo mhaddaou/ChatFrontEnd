@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+import MessageInput from "./MessageInput";
 
 const ChatApp = () => {
   return (
@@ -69,14 +70,16 @@ const ChatApp = () => {
             </div>
           </li>
         </ul>
-        <form className="flex">
+            <MessageInput />
+
+        {/* <form className="flex">
           <input
             className="flex-1 bg-gray-200 p-2 rounded-lg"
             type="text"
             placeholder="Type your message here..."
           />
           <button className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg ml-2">Send</button>
-</form>
+</form> */}
 </div>
 </div>
   );

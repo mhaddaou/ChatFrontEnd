@@ -1,8 +1,8 @@
 import CircleImage from "../Circl";
 import MessageInput from "../MessageInput";
 import ContactList from "../listContact";
-// import ChatApp from "../ChatHistory";
-import ChatApp from "./Home";
+import ChatApp from "../ChatHistory";
+import InputChat from "./Home";
 export default function Tome() {
     return (
       <>
