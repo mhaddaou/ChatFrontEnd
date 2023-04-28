@@ -31,13 +31,17 @@ export default function Home() {
             </div>
 
             <div className="flex justify-start">
-              <div className="bg-gray-200 p-2 rounded-lg max-w-xs">
-                <p>Hi there!</p>
+              <div className="bg-gray-200 p-2 rounded-lg max-w-xs ">
+                <p className="p-2">Hi there!</p>
+              </div>
+              <div className="bg-gray-200 p-2 rounded-lg max-w-xs ">
+                <p className="p-2">Hi there!</p>
               </div>
             </div>
+            <br/>
             <form
               // onSubmit={onSubmit}
-              className="flex items-center border-t border-gray-300 py-4 px-6"
+              className="flex items-center border-t border-gray-300 py-4 px-6 "
             >
               <input
                 type="text"
@@ -66,7 +70,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );
