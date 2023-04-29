@@ -229,9 +229,6 @@ const ChatHistory = () => {
       id: 8,
       text: "The Lakers beat the Suns in overtime.",
       sender: "friend",
-    },{
-      id: 9,
-      text: "ta malk asahb",
     }
   ]);
 
@@ -267,18 +264,12 @@ const ChatHistory = () => {
   return (
     <div className="flex flex-col h-full overflow-y-auto">
       {messages.map((message) => (
-        <div
-          key={message.id}
-          className={`flex justify-${message.sender === "user" ? "end" : "start"} mb-4`}
-        >
-          <div
-            className={`${
+       
+        <div key={message.id} className={`mb-4 flex justify-${message.sender === "user" ? "end" : "start"}`}> 
+        <div className={`${
               message.sender === "user" ? "bg-blue-500 text-white" : "bg-gray-200"
-            } py-2 px-4 rounded-lg`}
-          >
-            {message.text}
-          </div>
-        </div>
+            } py-2 px-4 rounded-lg`}>
+          {message.text}</div></div>
       ))}
        <div className="mt-auto ">
         <form onSubmit={handleSubmit}>
