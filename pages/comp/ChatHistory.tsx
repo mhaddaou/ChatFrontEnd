@@ -135,11 +135,15 @@ const ChatHistory = () => {
     }
   };
   const click = ()=>{
-    setMessages([...messages, {
-      id: messages.length + 1,
-      text: inputValue,
-      sender: "user",
-    }]);
+    {
+      // var r : string= messages.length % 2 == 0 ? "user" : "friend";
+      if (inputValue != "")
+      setMessages([...messages, {
+        id: messages.length + 1,
+        text: inputValue,
+        
+        sender: "friend",
+      }]);}
     // setVal("");
   }
 
@@ -173,7 +177,7 @@ const ChatHistory = () => {
       </div>
     </form>
       </div>
-      <Link href="/Read">Read input</Link>
+      {/* <Link href="/Read">Read input</Link> */}
     </div>
     
   );
