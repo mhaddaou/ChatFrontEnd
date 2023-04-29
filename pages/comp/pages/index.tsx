@@ -5,18 +5,18 @@ import ChatApp from "../ChatHistory";
 import InputChat from "./Home";
 export default function Tome() {
     return (
-      <>
+      <div className="bg-saliha">
 
-    <div className="flex flex-row h-screen">
-      <div className="w-1/4 bg-gray-100 p-4">
+    <div className="flex flex-row h-screen gap-1">
+      <div className="w-1/4 bg-sky-900 p-4">
       <ContactList />
       </div>
-      <div className="w-1/2 bg-white p-4">
+      <div className="w-1/2 bg-rtn p-4">
       <ChatApp />
       </div>
-      <div className="w-1/4 bg-gray-100 p-4">Input Field</div>
+      <div className="w-1/4 bg-sky-900 p-4">Input Field</div>
     </div>
 
-      </>
+      </div>
     );
         }
