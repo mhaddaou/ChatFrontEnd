@@ -1,7 +1,7 @@
 
-import Link from "next/link";
-import { useState } from "react";
-
+import { useState ,  } from "react";
+import { FiSend } from 'react-icons/fi';
+import Avatar from "./Avatar";
 const ChatHistory = () => {
   const [messages, setMessages] = useState([
     {
@@ -44,66 +44,66 @@ const ChatHistory = () => {
       text: "The Lakers beat the Suns in overtime.",
       sender: "friend",
     },
-    {
-      id: 5,
-      text: "Not much, just hanging out at home. How about you?",
-      sender: "user",
-    },
-    {
-      id: 6,
-      text: "Same here. Did you catch the game last night?",
-      sender: "friend",
-    },
-    {
-      id: 7,
-      text: "No, I didn't. Who won?",
-      sender: "user",
-    },
-    {
-      id: 8,
-      text: "The Lakers beat the Suns in overtime.",
-      sender: "friend",
-    },
-    {
-      id: 5,
-      text: "Not much, just hanging out at home. How about you?",
-      sender: "user",
-    },
-    {
-      id: 6,
-      text: "Same here. Did you catch the game last night?",
-      sender: "friend",
-    },
-    {
-      id: 7,
-      text: "No, I didn't. Who won?",
-      sender: "user",
-    },
-    {
-      id: 8,
-      text: "The Lakers beat the Suns in overtime.",
-      sender: "friend",
-    },
-    {
-      id: 5,
-      text: "Not much, just hanging out at home. How about you?",
-      sender: "user",
-    },
-    {
-      id: 6,
-      text: "Same here. Did you catch the game last night?",
-      sender: "friend",
-    },
-    {
-      id: 7,
-      text: "No, I didn't. Who won?",
-      sender: "user",
-    },
-    {
-      id: 8,
-      text: "The Lakers beat the Suns in overtime.",
-      sender: "friend",
-    }
+    // {
+    //   id: 5,
+    //   text: "Not much, just hanging out at home. How about you?",
+    //   sender: "user",
+    // },
+    // {
+    //   id: 6,
+    //   text: "Same here. Did you catch the game last night?",
+    //   sender: "friend",
+    // },
+    // {
+    //   id: 7,
+    //   text: "No, I didn't. Who won?",
+    //   sender: "user",
+    // },
+    // {
+    //   id: 8,
+    //   text: "The Lakers beat the Suns in overtime.",
+    //   sender: "friend",
+    // },
+    // {
+    //   id: 5,
+    //   text: "Not much, just hanging out at home. How about you?",
+    //   sender: "user",
+    // },
+    // {
+    //   id: 6,
+    //   text: "Same here. Did you catch the game last night?",
+    //   sender: "friend",
+    // },
+    // {
+    //   id: 7,
+    //   text: "No, I didn't. Who won?",
+    //   sender: "user",
+    // },
+    // {
+    //   id: 8,
+    //   text: "The Lakers beat the Suns in overtime.",
+    //   sender: "friend",
+    // },
+    // {
+    //   id: 5,
+    //   text: "Not much, just hanging out at home. How about you?",
+    //   sender: "user",
+    // },
+    // {
+    //   id: 6,
+    //   text: "Same here. Did you catch the game last night?",
+    //   sender: "friend",
+    // },
+    // {
+    //   id: 7,
+    //   text: "No, I didn't. Who won?",
+    //   sender: "user",
+    // },
+    // {
+    //   id: 8,
+    //   text: "The Lakers beat the Suns in overtime.",
+    //   sender: "friend",
+    // }
   ]);
 
   const [newMessage, setNewMessage] = useState("");
@@ -148,7 +148,8 @@ const ChatHistory = () => {
   }
 
   return (
-    <div className="flex flex-col h-full overflow-y-auto">
+    <div className="flex flex-col h-full overflow-y-auto relative scrollbar scrollbar-thumb-green-400 scrollbar-w-1 scrollbar-track-slate-100 scrollbar- ">
+      <Avatar src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" name="mohamed haddaoui"/>
       {messages.map((message) => (
        
         <div key={message.id} className={`mb-4 flex justify-${message.sender === "user" ? "end" : "start"}`}> 
@@ -158,7 +159,7 @@ const ChatHistory = () => {
           {message.text}</div></div>
          
       ))}
-       <div className="mt-auto ">
+       <div className="mt-auto sticky bottom-0  ">
         <form onSubmit={handleSubmit}>
         <div className="flex items-center ">
         <input
@@ -166,14 +167,10 @@ const ChatHistory = () => {
           value={inputValue}
           onChange={handleInputChange}
           placeholder="Type a message..."
-          className="flex-grow p-2 rounded-lg mr-2 bg-bginp"
+          className="flex-grow p-2 rounded-lg mr-2 bg-bginp w-2 sm:w-full h-full"
           />
-        <button
-          type="submit" onClick={click}
-          className="bg-cyan-700 text-white px-4 py-2 rounded-lg"
-          >
-          Send
-        </button>
+          <button type="submit" onClick={click}><FiSend className=" text-white w-5 h-5 mr-2 " /></button>
+       
       </div>
     </form>
       </div>
