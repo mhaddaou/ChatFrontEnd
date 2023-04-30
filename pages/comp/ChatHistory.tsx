@@ -1,110 +1,22 @@
 
-import { useState ,  } from "react";
+import { useState ,useEffect  } from "react";
 import { FiSend } from 'react-icons/fi';
 import Avatar from "./Avatar";
+import axios from "axios";
 const ChatHistory = () => {
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      text: "Hi there!",
-      sender: "user",
-    },
-    {
-      id: 2,
-      text: "Hey, how are you?",
-      sender: "friend",
-    },
-    {
-      id: 3,
-      text: "I'm doing pretty well, thanks for asking. How about you?",
-      sender: "user",
-    },
-    {
-      id: 4,
-      text: "Not too bad. What have you been up to?",
-      sender: "friend",
-    },
-    {
-      id: 5,
-      text: "Not much, just hanging out at home. How about you?",
-      sender: "user",
-    },
-    {
-      id: 6,
-      text: "Same here. Did you catch the game last night?",
-      sender: "friend",
-    },
-    {
-      id: 7,
-      text: "No, I didn't. Who won?",
-      sender: "user",
-    },
-    {
-      id: 8,
-      text: "The Lakers beat the Suns in overtime.",
-      sender: "friend",
-    },
-    // {
-    //   id: 5,
-    //   text: "Not much, just hanging out at home. How about you?",
-    //   sender: "user",
-    // },
-    // {
-    //   id: 6,
-    //   text: "Same here. Did you catch the game last night?",
-    //   sender: "friend",
-    // },
-    // {
-    //   id: 7,
-    //   text: "No, I didn't. Who won?",
-    //   sender: "user",
-    // },
-    // {
-    //   id: 8,
-    //   text: "The Lakers beat the Suns in overtime.",
-    //   sender: "friend",
-    // },
-    // {
-    //   id: 5,
-    //   text: "Not much, just hanging out at home. How about you?",
-    //   sender: "user",
-    // },
-    // {
-    //   id: 6,
-    //   text: "Same here. Did you catch the game last night?",
-    //   sender: "friend",
-    // },
-    // {
-    //   id: 7,
-    //   text: "No, I didn't. Who won?",
-    //   sender: "user",
-    // },
-    // {
-    //   id: 8,
-    //   text: "The Lakers beat the Suns in overtime.",
-    //   sender: "friend",
-    // },
-    // {
-    //   id: 5,
-    //   text: "Not much, just hanging out at home. How about you?",
-    //   sender: "user",
-    // },
-    // {
-    //   id: 6,
-    //   text: "Same here. Did you catch the game last night?",
-    //   sender: "friend",
-    // },
-    // {
-    //   id: 7,
-    //   text: "No, I didn't. Who won?",
-    //   sender: "user",
-    // },
-    // {
-    //   id: 8,
-    //   text: "The Lakers beat the Suns in overtime.",
-    //   sender: "friend",
-    // }
-  ]);
+  async function fetchData() {
+    const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+    return response.data;
+  }
+  
+  const [messages, setMessages] = useState([]);
+  useEffect(() => {
+    async function getData() {
+      const response = await fetchData();
+      setMessages(response);
+    }
+    getData();
+  }, []);
 
   const [newMessage, setNewMessage] = useState("");
 
@@ -140,9 +52,9 @@ const ChatHistory = () => {
       if (inputValue != "")
       setMessages([...messages, {
         id: messages.length + 1,
-        text: inputValue,
-        
-        sender: "friend",
+        name: "med",
+        "email": "lkdjf",
+        body: inputValue,
       }]);}
     // setVal("");
   }
@@ -150,13 +62,13 @@ const ChatHistory = () => {
   return (
     <div className="flex flex-col h-full overflow-y-auto relative scrollbar scrollbar-thumb-green-400 scrollbar-w-1 scrollbar-track-slate-100 scrollbar- ">
       <Avatar src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" name="mohamed haddaoui"/>
-      {messages.map((message) => (
+      {messages.map((message : any) => (
        
-        <div key={message.id} className={`mb-4 flex justify-${message.sender === "user" ? "end" : "start"}`}> 
+        <div key={message.id} className={`mb-4 flex justify-${message.id %2 == 0  ? "end" : "start"}`}> 
         <div className={`${
-              message.sender === "user" ? "bg-blue-500 text-white" : "bg-blue-100"
+              message.id % 2 == 0  ? "bg-blue-500 text-white" : "bg-blue-100"
             } py-2 px-4 rounded-lg`}>
-          {message.text}</div></div>
+          {message.body}</div></div>
          
       ))}
        <div className="mt-auto sticky bottom-0  ">
