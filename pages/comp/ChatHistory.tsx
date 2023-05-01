@@ -3,36 +3,24 @@ import { useState ,useEffect  } from "react";
 import { FiSend } from 'react-icons/fi';
 import Avatar from "./Avatar";
 import axios from "axios";
-const ChatHistory = () => {
-  async function fetchData() {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-    return response.data;
-  }
+export default function ChatHistory({ chatHistory } : any) {
+  // async function fetchData(url : string) {
+  //   const response = await axios.get(url) ;
+  //   return response.data;
+  // }
   
   const [messages, setMessages] = useState([]);
-  useEffect(() => {
-    async function getData() {
-      const response = await fetchData();
-      setMessages(response);
-    }
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const response = await fetchData(props.url);
+  //     setMessages(response);
+  //   }
+  //   getData();
+  // }, []);
 
   const [newMessage, setNewMessage] = useState("");
 
-  const handleMessageSend = () => {
-    if (newMessage) {
-      setMessages([
-        ...messages,
-        {
-          id: messages.length + 1,
-          text: newMessage,
-          sender: "user",
-        },
-      ]);
-      setNewMessage("");
-    }
-  };
+  
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event : any) => {
@@ -62,7 +50,7 @@ const ChatHistory = () => {
   return (
     <div className="flex flex-col h-full overflow-y-auto relative scrollbar scrollbar-thumb-green-400 scrollbar-w-1 scrollbar-track-slate-100 scrollbar- ">
       <Avatar src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" name="mohamed haddaoui"/>
-      {messages.map((message : any) => (
+      {chatHistory.map((message : any) => (
        
         <div key={message.id} className={`mb-4 flex justify-${message.id %2 == 0  ? "end" : "start"}`}> 
         <div className={`${
@@ -91,6 +79,4 @@ const ChatHistory = () => {
     
   );
 };
-
-export default ChatHistory;
 
